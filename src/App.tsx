@@ -8,13 +8,13 @@ function App() {
     base: `"nav" "main"`,
     lg: `"nav nav""aside main"`
   }}>
-    <GridItem area='nav' bg='coral'>
+    <GridItem area='nav' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
       <NavBar />
     </GridItem>
-    <GridItem area='aside' bg='gold'>
+    <GridItem area='aside' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
       Aside
     </GridItem>
-    <GridItem area='main' bg='dodgerblue'>
+    <GridItem area='main' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
       <GameGrid />
     </GridItem>
   </Grid>
