@@ -8,11 +8,16 @@ function App() {
   return (<Grid templateAreas={{
     base: `"nav" "main"`,
     lg: `"nav nav""aside main"`
-  }}>
+  }}
+    templateColumns={{
+      base: '1fr',
+      lg: '200px 1fr'
+    }}
+  >
     <GridItem area='nav' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
       <NavBar />
     </GridItem>
-    <GridItem area='aside' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
+    <GridItem area='aside' paddingX={5} bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
       <GenreList />
     </GridItem>
     <GridItem area='main' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
