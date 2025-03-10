@@ -10,7 +10,7 @@ interface FetchResponse<T> {
     results: T[];
 }
 
-const useData = <T>(endpoint: string, _requestConfig?: AxiosRequestConfig, _deps?: any[]) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
 
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState('');
@@ -18,7 +18,7 @@ const useData = <T>(endpoint: string, _requestConfig?: AxiosRequestConfig, _deps
     useEffect(() => {
         const controller = new AbortController();
         apiClient
-            .get<FetchResponse<T>>(endpoint, { signal: controller.signal, ..._requestConfig })
+            .get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
             .then(res => setData(res.data.results))
             .catch(err => {
                 if (err instanceof CanceledError) return;
@@ -26,7 +26,7 @@ const useData = <T>(endpoint: string, _requestConfig?: AxiosRequestConfig, _deps
             });
 
         return () => controller.abort();
-    }, _deps ? [..._deps] : []);
+    }, deps ? [...deps] : []);
 
     return { data, error }
 }

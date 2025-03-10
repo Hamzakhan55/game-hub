@@ -6,18 +6,24 @@ import {
     MenuTrigger
 } from '../components/ui/menu'
 import { BsChevronDown } from 'react-icons/bs'
+import { Platform } from '@/hooks/useGames'
 
-const PlatformSelector = () => {
+interface Props {
+    onSelectedPlatform: (platform: Platform) => void;
+    selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({ onSelectedPlatform, selectedPlatform }: Props) => {
     const { data, error } = usePlatforms();
 
     if (error) return null;
     return (
         <MenuRoot>
             <MenuTrigger>
-                Platforms <BsChevronDown />
+                {selectedPlatform?.name || "Platform"} <BsChevronDown />
             </MenuTrigger>
             <MenuContent>
-                {data.map(platform => <MenuItem key={platform.id} value={platform.name}>{platform.name}</MenuItem>)}
+                {data.map(platform => <MenuItem onClick={() => onSelectedPlatform(platform)} key={platform.id} value={platform.name}>{platform.name}</MenuItem>)}
             </MenuContent>
         </MenuRoot>
     )
