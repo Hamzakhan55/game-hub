@@ -1,3 +1,5 @@
+
+import './index.css';
 import { Provider } from "./components/ui/provider.tsx"
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

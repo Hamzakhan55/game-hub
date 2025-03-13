@@ -29,7 +29,7 @@ export const InputGroup = React.forwardRef<HTMLDivElement, InputGroupProps>(
       React.Children.only<React.ReactElement<InputElementProps>>(children)
 
     return (
-      <Group ref={ref} {...rest}>
+      <Group ref={ref} w='100%' {...rest}>
         {startElement && (
           <InputElement pointerEvents="none" {...startElementProps}>
             {startElement}
