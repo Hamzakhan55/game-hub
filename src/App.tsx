@@ -36,13 +36,13 @@ function App() {
       lg: '200px 1fr'
     }}
   >
-    <GridItem area='nav' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
+    <GridItem area='nav' bg='#0d0d0d'>
       <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
     </GridItem>
-    <GridItem area='aside' paddingX={5} bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
+    <GridItem area='aside' paddingX={5} bg='#0d0d0d'>
       <GenreList selectedGenre={gameQuery.genre} onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
     </GridItem>
-    <GridItem area='main' bg='linear-gradient(to right, #214052 0%, #214052 100%)'>
+    <GridItem area='main' bg='#0d0d0d'>
       <Box paddingLeft={2} >
         <GameHeading gameQuery={gameQuery} />
         <Flex gap={5} marginBottom={5}>
