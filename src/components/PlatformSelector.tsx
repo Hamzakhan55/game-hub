@@ -20,7 +20,6 @@ const PlatformSelector = ({ onSelectedPlatform, selectedPlatform }: Props) => {
 
     return (
         <MenuRoot>
-            {/* ✅ Use a Flexbox to structure the button's content */}
             <MenuTrigger as={Button} borderRadius={10} paddingRight={4}>
                 <Flex align="center" gap={2}>
                     {selectedPlatform?.name || "Platform"}
@@ -33,9 +32,7 @@ const PlatformSelector = ({ onSelectedPlatform, selectedPlatform }: Props) => {
                     <MenuItem
                         key={platform.id}
                         value={platform.name}
-                        onClick={() => onSelectedPlatform(platform)}
-                    >
-                        {platform.name}
+                        onClick={() => onSelectedPlatform(platform)}>{platform.name}
                     </MenuItem>
                 ))}
             </MenuContent>

@@ -1,4 +1,4 @@
-import { Button, MenuContent, MenuItem, MenuRoot, MenuTrigger } from "@chakra-ui/react"
+import { Button, Flex, MenuContent, MenuItem, MenuRoot, MenuTrigger } from "@chakra-ui/react"
 import { BsChevronDown } from "react-icons/bs"
 
 
@@ -20,15 +20,41 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
 
     return (
         <MenuRoot>
-            <MenuTrigger asChild>
-                <Button>Order By: {currentSortOrder?.label || 'Relevance'} <BsChevronDown /></Button>
-
+            <MenuTrigger as={Button} borderRadius={10} paddingRight={4}>
+                <Flex align="center" gap={2}>
+                    Order By: {currentSortOrder?.label || 'Relevance'}
+                    <BsChevronDown />
+                </Flex>
             </MenuTrigger>
-            <MenuContent>
-                {sortOrders.map(order => <MenuItem onClick={() => onSelectSortOrder(order.value)} key={order.value} value={order.value}>{order.label}</MenuItem>)}
+
+            <MenuContent
+                zIndex="popover"
+                position="absolute"
+                left="30%"
+                right="55%"
+                mt="50px"
+                bg="white"
+                borderColor="gray.700"
+                borderRadius="10px"
+                maxHeight="300px"
+                overflowY="auto"
+                boxShadow="lg"
+            >
+                {sortOrders.map(order => (
+                    <MenuItem
+                        key={order.value} value={order.value}
+                        onClick={() =>
+                            onSelectSortOrder(order.value)}
+                        color="black"
+                        _hover={{ bg: "gray.200" }}
+                        px="12px"
+                        py="8px"
+                        borderRadius="6px"
+                    >
+                        {order.label}</MenuItem>))}
             </MenuContent>
         </MenuRoot>
     )
 }
 
-export default SortSelector
+export default SortSelector;
