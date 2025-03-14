@@ -41,9 +41,6 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
                         >
                             {genre.name}
                         </Button>
-
-
-
                     </HStack>
                 </ListItem>)
                 }
