@@ -9,11 +9,11 @@ interface Props {
 
 const GameGrid = ({ gameQuery }: Props) => {
     const { data, error } = useGames(gameQuery);
-    if (error) return <Text>{error}</Text>
+    if (error) return <Text>{error.message}</Text>
     return (
 
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} padding='10px' gap={6}>
-            {data.map(game =>
+            {data?.results.map(game =>
                 <GameCard key={game.id} game={game} />
             )}
         </SimpleGrid>
