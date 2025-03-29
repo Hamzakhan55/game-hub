@@ -6,7 +6,7 @@ import {
     MenuTrigger
 } from '../components/ui/menu'
 import { BsChevronDown } from 'react-icons/bs'
-import { Platform } from '@/hooks/useGames'
+import { Platform } from '@/hooks/usePlatforms'
 import { Button, Flex } from '@chakra-ui/react';
 
 interface Props {
