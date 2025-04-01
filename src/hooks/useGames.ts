@@ -34,6 +34,7 @@ const useGames = (gameQuery: GameQuery) =>
             return lastPage.next ? lastPage.next.match(/page=(\d+)/)?.[1] ?? undefined : undefined;
         },
         initialPageParam: 1,
+        staleTime: 24 * 60 * 60 * 1000,  // 24 hrs
     });
 
 export default useGames;
