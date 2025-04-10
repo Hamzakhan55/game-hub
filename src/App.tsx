@@ -4,19 +4,13 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
-
 import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import { GameQuery } from "./store";
 
 
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-}
+
 
 
 function App() {
@@ -25,7 +19,6 @@ function App() {
 
   //   replace the above two state variable with state varible of type GameQuery
 
-  const [gameQuery, setGameQuery] = useState({} as GameQuery);
 
   return (<Grid templateAreas={{
     base: `"nav" "main"`,
@@ -37,20 +30,20 @@ function App() {
     }}
   >
     <GridItem area='nav' bg='#0d0d0d'>
-      <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
+      <NavBar />
     </GridItem>
     <GridItem area='aside' paddingX={5} bg='#0d0d0d'>
-      <GenreList onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })} selectedGenreId={0} />
+      <GenreList />
     </GridItem>
     <GridItem area='main' bg='#0d0d0d'>
       <Box paddingLeft={2} >
-        <GameHeading gameQuery={gameQuery} />
+        <GameHeading />
         <Flex gap={5} marginBottom={5}>
-          <PlatformSelector selectedPlatformId={gameQuery.platformId} onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platformId: platform.id, })} />
-          <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
+          <PlatformSelector />
+          <SortSelector />
         </Flex>
       </Box>
-      <GameGrid gameQuery={gameQuery} />
+      <GameGrid />
     </GridItem>
   </Grid>
   )
